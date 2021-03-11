@@ -1,0 +1,37 @@
+---
+title: "My City"
+author: "~ M.A.N.D.A.R ~"
+date: "11-MAR-2021"
+output: ioslides_presentation
+---
+<style type="text/css">
+  body{
+  font-size: 12pt;
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## About this Presentation
+
+This is an R Markdown presentation created about my city.
+It contains some of the famous locations in and around the city.
+
+## Thane, India - March 11, 2021
+```{r map, cache=TRUE, message=FALSE}
+library(leaflet)
+
+df <- data.frame(name=c("City", "Lake", "Hills"), count=c(4400, 210, 1600), lat=c(19.2183, 19.1935, 19.2338), lng=c(72.9781, 72.975, 72.9446), col=c("blue", "red", "green"))
+
+df %>%
+        leaflet() %>%
+        addTiles() %>%
+        addCircles(weight = 1, radius=df$count, color = df$col) %>%
+        addLegend(labels=df$name, colors=df$col)
+```
+
+- This is a map of *Thane* city, where I live.
+- It has a nice lake right in middle of this busy city.
+- Outskirts hill is abode for leopards. Amazing co-existance.
